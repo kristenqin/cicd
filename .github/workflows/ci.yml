@@ -1,0 +1,21 @@
+name: Simple CI
+
+on:
+  push:
+    branches: [main] # 每次 push 到 main 分支时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # 拉取代码
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test --if-present # 如果有测试脚本就跑
+      - name: Build project
+        run: npm run build
