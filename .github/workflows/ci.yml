@@ -19,3 +19,5 @@ jobs:
         run: npm test --if-present # 如果有测试脚本就跑
       - name: Build project
         run: npm run build
+      - name: Deploy to production
+        run: echo "Deploy to production..."
